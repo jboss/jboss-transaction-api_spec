@@ -37,6 +37,14 @@
     <url>https://github.com/jboss/jboss-transaction-api_spec</url>
   </scm>
 
+  <properties>
+    <!-- 
+        Don't automatically push the tag when using Maven release plugin.
+        The release build needs to be staged and verified before the tag is pushed.
+    -->
+    <pushChanges>false</pushChanges>
+  </properties>
+
   <build>
     <plugins>
       <!-- Add OSGI metadata to the JAR without changing the packaging type. -->
