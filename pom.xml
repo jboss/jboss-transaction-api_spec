@@ -85,16 +85,24 @@
             <goals>
               <goal>manifest</goal>
             </goals>
-            <configuration>
-              <instructions>
-                <!-- Set the package version to match the spec version -->
-                <Export-Package>
-                  javax.transaction*;version=1.1
-                </Export-Package>
-              </instructions>
-            </configuration>
           </execution>
         </executions>
+        <configuration>
+          <archive>
+            <manifest>
+              <addDefaultSpecificationEntries>false</addDefaultSpecificationEntries>
+            </manifest>
+          </archive>
+          <instructions>
+            <Specification-Title>JSR 907: Java Transaction API (JTA)</Specification-Title>
+            <Specification-Vendor>Oracle, Inc.</Specification-Vendor>
+            <Specification-Version>1.1</Specification-Version>
+            <!-- Set the package version to match the spec version -->
+            <Export-Package>
+              javax.transaction*;version=1.1
+            </Export-Package>
+          </instructions>
+        </configuration>
       </plugin>
       <!-- Add the OSGi Manifest to the main jar -->
       <plugin>
