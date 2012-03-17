@@ -11,7 +11,7 @@
 
   <groupId>org.jboss.spec.javax.transaction</groupId>
   <artifactId>jboss-transaction-api_1.1_spec</artifactId>
-  <version>1.0.1.Final</version>
+  <version>1.0.2.Final-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>Java Transaction API</name>
