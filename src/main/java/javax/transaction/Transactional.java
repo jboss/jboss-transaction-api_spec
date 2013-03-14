@@ -32,7 +32,7 @@ import javax.interceptor.InterceptorBinding;
    * calling the bean's methods. It is best practice to avoid such use of Transactional annotations in conjunction with
    * EJB container managed transactions in order to avoid possible confusion.
    *
-   * @since:  JTA 1.2
+   * @since  JTA 1.2
    *
    **/
 

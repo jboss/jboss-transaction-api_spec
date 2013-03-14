@@ -7,7 +7,7 @@ package javax.transaction;
  *  stream will be marked for rollback as a result of the TransactionalException being thrown by the Transactional
  *  interceptor of the second bean.
  *
- * * @since:  JTA 1.2
+ *  @since  1.2
  *
  */
 public class TransactionalException extends RuntimeException
