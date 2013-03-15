@@ -40,8 +40,8 @@
     <!-- 
         Don't automatically push the tag when using Maven release plugin.
         The release build needs to be staged and verified before the tag is pushed.
-    -->
     <pushChanges>false</pushChanges>
+    -->
   </properties>
 
   <build>
