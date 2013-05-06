@@ -7,6 +7,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 import javax.interceptor.InterceptorBinding;
+import javax.enterprise.util.Nonbinding;
 
 
   /**
@@ -41,7 +42,9 @@ import javax.interceptor.InterceptorBinding;
 @Retention(java.lang.annotation.RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE, ElementType.METHOD})
 public @interface Transactional {
-      TxType value() default TxType.REQUIRED;
+
+  @Nonbinding
+  TxType value() default TxType.REQUIRED;
  
   public enum TxType {
       REQUIRED,
@@ -52,8 +55,10 @@ public @interface Transactional {
       NEVER
   }
 
+  @Nonbinding
   Class[] rollbackOn() default {};
 
+  @Nonbinding
   Class[] dontRollbackOn() default {};
 
-  }
+}
