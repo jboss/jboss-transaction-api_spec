@@ -11,7 +11,7 @@
 
   <groupId>org.jboss.spec.javax.transaction</groupId>
   <artifactId>jboss-transaction-api_1.2_spec</artifactId>
-  <version>1.0.0.Beta1-SNAPSHOT</version>
+  <version>1.0.0.Alpha2</version>
   <packaging>jar</packaging>
 
   <name>Java Transaction API</name>
@@ -34,7 +34,7 @@
     <connection>scm:git:git@github.com:jboss/jboss-transaction-api_spec.git</connection>
     <developerConnection>scm:git:git@github.com:jboss/jboss-transaction-api_spec.git</developerConnection>
     <url>https://github.com/jboss/jboss-transaction-api_spec</url>
-    <tag>HEAD</tag>
+    <tag>jboss-transaction-api_1.2_spec-1.0.0.Alpha2</tag>
   </scm>
 
   <properties>
