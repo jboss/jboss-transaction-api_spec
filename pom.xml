@@ -120,13 +120,13 @@
     <dependency>
       <groupId>javax.enterprise</groupId>
       <artifactId>cdi-api</artifactId>
-      <version>1.1-PFD</version>
+      <version>1.1</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.jboss.spec.javax.interceptor</groupId>
       <artifactId>jboss-interceptors-api_1.2_spec</artifactId>
-      <version>1.0.0.Alpha1</version>
+      <version>1.0.0.Alpha3</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>
