@@ -12,27 +12,33 @@ import javax.enterprise.util.Nonbinding;
 
 
   /**
-   * Annotation used by applications to control transaction boundaries on CDI managed beans, as well as
-   * classes defined as managed beans by the Java EE specification such as servlets, JAX-RS resource classes, and JAX-WS
-   * service endpoints, declaratively. This provides the semantics of EJB transaction attributes in CDI without
-   * dependencies such as RMI. This support is implemented via an implementation of a CDI interceptor that conducts the
-   * necessary suspending, resuming, etc.
-   *  
-   * By default checked exceptions do not result in the transactional interceptor marking the transaction for rollback
-   * and instances of RuntimeException and its subclasses do. This default behavior can be overridden by specifying
-   * which exceptions result in the interceptor marking the transaction for rollback. The rollbackOn element can be set
-   * to indicate which exceptions should cause the interceptor to mark the transaction for rollback. Conversely, the
-   * dontRollbackOn element can be set to indicate which exceptions should do not cause the interceptor to mark the
-   * transaction for rollback. When a class is specified for either of these elements, the designated behavior applies
-   * to subclasses of that class as well. If both elements are specified, dontRollbackOn takes precedence.
-   *  
-   * EJB application exceptions (i.e., runtime exceptions annotated with @ApplicationException) are treated just as any
-   * other runtime exceptions unless otherwise specified.
-   *  
-   * When Transactional annotated managed beans are used in conjunction with EJB container managed transactions the EJB
-   * container behavior is applied before the bean is called. When the bean is called the CDI behavior is applied before
-   * calling the bean's methods. It is best practice to avoid such use of Transactional annotations in conjunction with
-   * EJB container managed transactions in order to avoid possible confusion.
+   *<p>The javax.transaction.Transactional annotation provides the application
+   * the ability to declaratively control transaction boundaries on CDI managed beans, as
+   * well as classes defined as managed beans by the Java EE specification, at both the class
+   * and method level where method level annotations override those at the class level.</p>
+   * <p>See the EJB specification for restrictions on the use of @Transactional with EJBs.</p>
+   * <p>This support is provided via an implementation of CDI interceptors that conduct the
+   * necessary suspending, resuming, etc. The Transactional interceptor interposes on business method
+   * invocations only and not on lifecycle events. Lifecycle methods are invoked in an unspecified
+   * transaction context.</p>
+   * <p>If an attempt is made to call any method of the UserTransaction interface from within the
+   * scope of a bean or method annotated with @Transactional and a Transactional.TxType other than
+   * NOT_SUPPORTED or NEVER, an IllegalStateException must be thrown. The use of the UserTransaction
+   * is allowed within life cycle events. The use of the TransactionSynchronizationRegistry is allowed
+   * regardless of any @Transactional annotation.</p>
+   * <p>The Transactional interceptors must have a priority of
+   * Interceptor.Priority.PLATFORM_BEFORE+200.
+   * Refer to the Interceptors specification for more details.</p>
+   * <p>The TxType element of the annotation indicates whether a bean method is to be executed within
+   * a transaction context.  TxType.REQUIRED is the default.</p>
+   * <p>By default checked exceptions do not result in the transactional interceptor marking the transaction for rollback
+   * and instances of RuntimeException and its subclasses do. This default behavior can be modified by specifying
+   * exceptions that result in the interceptor marking the transaction for rollback and/or exceptions that do not result in rollback.</p>
+   * <p>The rollbackOn element can be set to indicate which exceptions should cause the interceptor to mark the transaction for rollback.</p>
+   * <p>Conversely, the dontRollbackOn element can be set to indicate which exceptions should do not cause the interceptor to mark the
+   * transaction for rollback.</p>
+   * <p>When a class is specified for either of these elements, the designated behavior applies
+   * to subclasses of that class as well. If both elements are specified, dontRollbackOn takes precedence.</p>
    *
    * @since JTA1.2
    *
@@ -40,7 +46,7 @@ import javax.enterprise.util.Nonbinding;
 
 @Inherited
 @InterceptorBinding
-@Retention(RetentionPolicy.RUNTIME)
+@Retention(value = RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE, ElementType.METHOD})
 public @interface Transactional {
 
@@ -123,8 +129,8 @@ public @interface Transactional {
      *  are specified, dontRollbackOn takes precedence.
      * @return Class[] of Exceptions
      */
-  @Nonbinding
-  Class[] rollbackOn() default {};
+    @Nonbinding
+    Class[] rollbackOn() default {};
 
     /**
      * The dontRollbackOn element can be set to indicate exceptions that must not cause
@@ -135,7 +141,7 @@ public @interface Transactional {
      *  are specified, dontRollbackOn takes precedence.
      * @return Class[] of Exceptions
      */
-  @Nonbinding
-  Class[] dontRollbackOn() default {};
+    @Nonbinding
+    Class[] dontRollbackOn() default {};
 
 }

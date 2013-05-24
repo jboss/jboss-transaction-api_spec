@@ -96,7 +96,7 @@
           <instructions>
             <Specification-Title>JSR 907: Java Transaction API (JTA)</Specification-Title>
             <Specification-Vendor>Oracle, Inc.</Specification-Vendor>
-            <Specification-Version>1.1</Specification-Version>
+            <Specification-Version>1.2</Specification-Version>
             <!-- Set the package version to match the spec version -->
             <Export-Package>
               javax.transaction*;version=1.2
