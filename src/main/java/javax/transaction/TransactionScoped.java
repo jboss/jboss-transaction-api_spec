@@ -10,7 +10,7 @@ import javax.enterprise.context.NormalScope;
    * Annotation used to indicate a bean is to be scoped to the current active
    * JTA transaction.
    *
-   * @since  JTA 1.2
+   * @since JTA1.2
    *
    **/
 @Retention(java.lang.annotation.RetentionPolicy.RUNTIME)
