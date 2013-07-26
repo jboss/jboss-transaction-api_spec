@@ -17,6 +17,7 @@ public class TransactionalException extends RuntimeException
      */
     public TransactionalException(String s, Throwable throwable)
     {
+        super(s, throwable);
     }
 
 }
