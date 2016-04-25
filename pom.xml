@@ -6,7 +6,7 @@
   <parent>
     <groupId>org.jboss</groupId>
     <artifactId>jboss-parent</artifactId>
-    <version>10</version>
+    <version>20</version>
   </parent>
 
   <groupId>org.jboss.spec.javax.transaction</groupId>
@@ -43,6 +43,8 @@
         The release build needs to be staged and verified before the tag is pushed.
     <pushChanges>false</pushChanges>
     -->
+    <maven.compiler.target>1.7</maven.compiler.target>
+    <maven.compiler.source>1.7</maven.compiler.source>
   </properties>
 
   <build>
@@ -97,6 +99,11 @@
             <Specification-Title>JSR 907: Java Transaction API (JTA)</Specification-Title>
             <Specification-Vendor>Oracle, Inc.</Specification-Vendor>
             <Specification-Version>1.2</Specification-Version>
+            <Import-Package>
+                javax.enterprise.context;resolution:=optional,
+                javax.enterprise.util;resolution:=optional,
+                *
+            </Import-Package>
             <!-- Set the package version to match the spec version -->
             <Export-Package>
               javax.transaction*;version=1.2
@@ -120,7 +127,7 @@
     <dependency>
       <groupId>javax.enterprise</groupId>
       <artifactId>cdi-api</artifactId>
-      <version>1.1</version>
+      <version>1.2</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
