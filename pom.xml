@@ -38,7 +38,7 @@
   </scm>
 
   <properties>
-    <!-- 
+    <!--
         Don't automatically push the tag when using Maven release plugin.
         The release build needs to be staged and verified before the tag is pushed.
     <pushChanges>false</pushChanges>
@@ -61,7 +61,7 @@
               <goal>copy-resources</goal>
             </goals>
             <configuration>
-              <resources>          
+              <resources>
                 <resource>
                   <directory>${basedir}</directory>
                   <includes>
@@ -69,9 +69,9 @@
                     <include>README</include>
                   </includes>
                 </resource>
-              </resources>              
+              </resources>
               <outputDirectory>${project.build.outputDirectory}/META-INF</outputDirectory>
-            </configuration>            
+            </configuration>
           </execution>
         </executions>
       </plugin>
@@ -117,6 +117,11 @@
         <configuration>
           <archive>
             <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+            <manifestEntries>
+            <Automatic-Module-Name>
+              jboss.transaction.api.spec
+            </Automatic-Module-Name>
+      </manifestEntries>
           </archive>
         </configuration>
       </plugin>
