@@ -6,12 +6,12 @@
   <parent>
     <groupId>org.jboss</groupId>
     <artifactId>jboss-parent</artifactId>
-    <version>20</version>
+    <version>25</version>
   </parent>
 
   <groupId>org.jboss.spec.javax.transaction</groupId>
   <artifactId>jboss-transaction-api_1.2_spec</artifactId>
-  <version>1.0.2.Final-SNAPSHOT</version>
+  <version>1.1.0.Final-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>Java Transaction API</name>
@@ -43,8 +43,6 @@
         The release build needs to be staged and verified before the tag is pushed.
     <pushChanges>false</pushChanges>
     -->
-    <maven.compiler.target>1.7</maven.compiler.target>
-    <maven.compiler.source>1.7</maven.compiler.source>
   </properties>
 
   <build>
@@ -133,7 +131,7 @@
     <dependency>
       <groupId>org.jboss.spec.javax.interceptor</groupId>
       <artifactId>jboss-interceptors-api_1.2_spec</artifactId>
-      <version>1.0.0.Final</version>
+      <version>1.0.1.Final</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>
